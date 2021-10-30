@@ -1,7 +1,7 @@
 // Переменные
 var name = "Aibek";
 const lastName = "Dzheenbekov";
-let age = 52;
+let age = 53;
 
-alert("Имя человека " + name + " а его возраст " + age);
+console.log("Имя человека " + name + " а его возраст " + age + "!!!");
 console.log(age);
