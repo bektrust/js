@@ -1,0 +1,44 @@
+#!/bin/bash
+
+sevenDays=7
+sevenDaysAgo=$(date -j -v -7d +%Y%m%d)
+beforeToday=45
+eldestDay=$(date -j -v -${beforeToday}d +%d)
+eldestMonth=$(date -j -v -${beforeToday}d +%m)
+x=0
+
+today=$(date -j)
+
+# for ((i=1; i <= $sevenDays; i++))
+# do
+#   echo $(date -j -v-${i}d)
+# done
+
+for ((i=1; i <= beforeToday; i++))
+	 
+do
+currDate=$(date -j -v-${i}d +%Y%m%d)
+currDateD=$(date -j -v-${i}d +"%d")
+fullCurrDate=$(date -j -v-${i}d)
+weekCurrDate=$(date -j -v-${i}d +"%a")
+
+	if [[  $currDate < $sevenDaysAgo ]] && [[ $weekCurrDate != "Sun" ]] ; then
+		sr=$(( 34 - ${i} ))
+			if [[ $sr > 0 ]] ; then
+				echo $fullCurrDate
+			else  
+			   echo "Значение счетчика: $currDateD"
+				while [ $currDateD -lt 21 ]
+				do
+				
+				fullCurrDate=$(date -j -v-${i}d)
+				i=$(( $i+1 ))
+				currDateD=$(( $currDateD + 1 ))
+				echo $fullCurrDate
+				done
+
+				break
+			fi 
+	fi
+done
+
